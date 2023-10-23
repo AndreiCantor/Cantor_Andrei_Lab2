@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Cantor_Andrei_Lab2.Data;
 using Cantor_Andrei_Lab2.Models;
 
-namespace Cantor_Andrei_Lab2.Pages.Books
+namespace Cantor_Andrei_Lab2.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,12 +19,14 @@ namespace Cantor_Andrei_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Book = await _context.Book.Include(b=>b.Publisher).Include(b => b.Author).ToListAsync();
-
+            if (_context.Author != null)
+            {
+                Author = await _context.Author.ToListAsync();
+            }
         }
     }
 }
