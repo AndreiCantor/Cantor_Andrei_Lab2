@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Books</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -29,16 +29,17 @@
                 </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                    @Html.DisplayNameFor(model => model.Book[0].Author)
+                </a>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Book[0].Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].PublishingDate)
             </th>
-            <th colspan="2">
-                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
-                    @Html.DisplayNameFor(model => model.Book[0].Author)
-                </a>
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
             </th>
@@ -50,28 +51,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.BookD.Books) {
+        @foreach (var item in Model.BookD.Books)
+        {
             string selectedRow = "";
             if (item.ID == Model.BookID)
             {
                 selectedRow = "table-success";
             }
             <tr class="@selectedRow">
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FullName)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PublishingDate)
                 </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author.FirstName)
-            </td>
-   
-   
                 <td>
                     @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
                 </td>
