@@ -22,5 +22,7 @@ namespace Cantor_Andrei_Lab2.Data
 
         public DbSet<Cantor_Andrei_Lab2.Models.Category>? Category { get; set; }
         public object BookCategory { get; internal set; }
+        public DbSet<Cantor_Andrei_Lab2.Models.Member>? Member { get; set; }
+        public DbSet<Cantor_Andrei_Lab2.Models.Borrowing>? Borrowing { get; set; }
     }
 }
