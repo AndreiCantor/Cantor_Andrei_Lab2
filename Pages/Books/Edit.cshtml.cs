@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cantor_Andrei_Lab2.Data;
 using Cantor_Andrei_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cantor_Andrei_Lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : BookCategoriesPageModel
     {
         private readonly Cantor_Andrei_Lab2.Data.Cantor_Andrei_Lab2Context _context;
